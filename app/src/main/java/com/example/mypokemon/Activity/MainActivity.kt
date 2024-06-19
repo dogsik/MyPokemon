@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+/*Scope fun *** apply*/
         binding.pokemonNameTextView.setOnClickListener {
             val intent = Intent(this@MainActivity, DetailsActivity::class.java).apply {
                 putExtra("pokemon_id", 1)

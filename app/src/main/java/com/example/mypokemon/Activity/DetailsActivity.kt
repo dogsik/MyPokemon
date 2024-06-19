@@ -2,10 +2,8 @@ package com.example.mypokemon.Activity
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
-
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mypokemon.Repository.PokemonRepository
 import com.example.mypokemon.databinding.ActivityDetailsBinding
 
@@ -18,32 +16,30 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val pokemonId = intent.extras?.getInt("pokemon_id", -1) ?: -1
-        if (pokemonId != -1) {
-            val pokemon = PokemonRepository.getPokemonById(pokemonId)
-            if (pokemon != null) {
-                binding.apply {
-                    pokemonImageView.setImageResource(pokemon.picture)
-                    pokemonNameTextView.text = pokemon.name
-                    pokemonWeightTextView.text = pokemon.weight.toString()
-                    pokemonHeightTextView.text = pokemon.height.toString()
-                    pokemonTypeListView.adapter = ArrayAdapter(
-                        this@DetailsActivity,
-                        android.R.layout.simple_list_item_1,
-                        pokemon.elementalType
-                    )
-                    backBtn.setOnClickListener { finish() }
-                }
-            } else {
-                showErrorAndFinish("Pokemon with id not exist")
+
+        with(binding) {
+            if (pokemonId == -1) {
+                Toast.makeText(this@DetailsActivity, "Invalid id", Toast.LENGTH_SHORT).show()
+                finish()
+                return@with
             }
-        } else {
-            showErrorAndFinish("Invalid id")
+
+            PokemonRepository.getPokemonById(pokemonId)?.let { pokemon ->
+                pokemonImageView.setImageResource(pokemon.picture)
+                pokemonNameTextView.text = pokemon.name
+                pokemonWeightTextView.text = pokemon.weight.toString()
+                pokemonHeightTextView.text = pokemon.height.toString()
+                pokemonTypeTextView.text = pokemon.elementalType.joinToString(", ")
+
+                backBtn.setOnClickListener { finish() }
+            } ?: showErrorAndFinish("Pokemon with id does not exist")
         }
+
     }
 
     private fun showErrorAndFinish(errorMessage: String) {
         Toast.makeText(this, "Unknown error. Try again later", Toast.LENGTH_SHORT).show()
-        Log.e("mainPage", errorMessage)
+        Log.e("DetailsActivity", errorMessage)
         finish()
     }
 }
