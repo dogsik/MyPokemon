@@ -33,11 +33,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#3EBE80"
-        android:divider="@color/dark_grey"
+        android:divider="@color/white"
         android:gravity="center"
         android:padding="16dp"
         android:text="Squirtle"
-        android:textColor="@color/white"
+        android:textColor="#455A64"
         android:textSize="48sp" />
 
 </LinearLayout>
