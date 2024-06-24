@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import com.example.mypokemon.Repository.PokemonRepository
 import com.example.mypokemon.databinding.ActivityMainBinding
 import com.example.mypokemon.recycler.PokemonListAdapter
@@ -29,5 +31,6 @@ class MainActivity : AppCompatActivity() {
         val pokemonList = PokemonRepository.getAllPokemons()
         Log.d("MainActivity", "Pokemon list loaded with ${pokemonList.size} items")
         adapter.submit(pokemonList)
+        binding.recycler.addItemDecoration(DividerItemDecoration(this, VERTICAL))
     }
 }
