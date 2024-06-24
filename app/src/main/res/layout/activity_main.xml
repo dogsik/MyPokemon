@@ -1,43 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F08080"
+    android:background="@color/LightCoral"
     android:orientation="vertical"
-    tools:context=".Activity.MainActivity">
-
-    <TextView
-        android:id="@+id/title_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="List of Pokémon"
-        android:textColor="@color/dark_grey"
-        android:textSize="48sp" />
-
-    <TextView
-        android:id="@+id/subtitle_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="Click to see more about:"
-        android:textColor="@color/white"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/pokemon_name_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3EBE80"
-        android:divider="@color/white"
-        android:gravity="center"
-        android:padding="16dp"
-        android:text="Squirtle"
-        android:textColor="#455A64"
-        android:textSize="48sp" />
-
-</LinearLayout>
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    tools:context=".Activity.MainActivity"/>
