@@ -8,7 +8,6 @@ import com.example.mypokemon.ModelData.Pokemon
 import com.example.mypokemon.databinding.ItemPokemonBinding
 
 
-
 class PokemonListAdapter : RecyclerView.Adapter<PokemonViewHolder>() {
     private var items = emptyList<Pokemon>()
     var onClick: (Pokemon) -> Unit = {}

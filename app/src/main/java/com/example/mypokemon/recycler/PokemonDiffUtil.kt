@@ -3,10 +3,8 @@ package com.example.mypokemon.recycler
 import androidx.recyclerview.widget.DiffUtil
 import com.example.mypokemon.ModelData.Pokemon
 
-
 class PokemonDiffUtil(
-    private val oldList: List<Pokemon>,
-    private val newList: List<Pokemon>
+    private val oldList: List<Pokemon>, private val newList: List<Pokemon>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int = oldList.size
 
